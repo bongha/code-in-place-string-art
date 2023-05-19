@@ -1,0 +1,28 @@
+from graphics import Canvas
+import time
+    
+CANVAS_WIDTH = 500
+CANVAS_HEIGHT = 300
+DELAY = 0.05
+
+def main():
+    canvas = Canvas(CANVAS_WIDTH, CANVAS_HEIGHT)
+    canvas.create_rectangle(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT, 'black')
+    
+    draw_string_art(125, 25, 275, 125, 1, canvas)
+    draw_string_art(275, 175, 375, 25, -1, canvas)
+    draw_string_art(275, 175, 125, 275, 1, canvas)
+    draw_string_art(125, 25, 225, 175, -1, canvas)
+
+def draw_string_art(start_a_x, start_a_y, start_b_x, start_b_y, n, canvas):    
+    for i in range(21):
+        cur_a_x = start_a_x + 5 * i
+        cur_a_y = start_a_y + 5 * i
+        cur_b_x = start_b_x + 5 * i * n
+        cur_b_y = start_b_y - 5 * i * n
+        canvas.create_line(cur_a_x, cur_a_y, cur_b_x, cur_b_y, 'white')
+        
+        time.sleep(DELAY)
+
+if __name__ == '__main__':
+    main()
